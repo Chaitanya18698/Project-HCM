@@ -89,15 +89,18 @@
                     </div>
                     <div class="col-md-3 col-sm-6 form-group">
                         <label for="" class="control-label field-required">Date of Birth</label>
-                        <input type="date" class="form-control" placeholder="Select Date of Birth.." formControlName="dob">
+                        <my-date-picker name="dob" [options]="myDatePickerOptions" formControlName="dob" placeholder="dd/mm/yyyy">
+                        </my-date-picker>
                         <div *ngIf="regForm.controls['dob'].invalid && (regForm.controls['dob'].dirty || regForm.controls['dob'].touched)">                           
                             <small *ngIf="regForm.controls['dob'].errors.required" class="text-danger">DOB is compulsory</small>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 form-group">
                         <label for="gender" class="control-label field-required">Gender</label><br>
-                        <input type="radio" id="gender" name="gender" class="pr-2" formControlName="gender"><small>Male</small>
-                        <input type="radio" name="gender" id="gender" class="ml-3"><small>Female</small>
+                        <input type="radio" id="male" value="male" name="gender" formControlName="gender">
+                        <label for="male"  class="radio  position-relative mx-4">Male</label>
+                        <input type="radio" value="female" id="female" name="gender" formControlName="gender">
+                        <label for="female" class="radio  position-relative mx-4">Female</label>
                     </div>
                     <div class="col-md-3 col-sm-6 form-group">
                         <label for="" class="control-label field-required">Blood Group</label>
@@ -117,10 +120,10 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <label class="control-label field-required">Marital Status</label><br>
-                        <!-- <input id="status" type="radio" value="status" name="status" class="pr-2" (click)="spouse='show'"> -->
-                        <label for="status" class="radio" (click)="spouse='show'">Married</label>
-                        <!-- <input type="radio" id="single" value="status" name="status" class="ml-3" (click)="spouse='hide'"> -->
-                        <label for="single" class="radio" (click)="spouse='hide'">Single</label>
+                        <input id="status" type="radio" value="status" name="status" class="pr-2" (click)="spouse='show'">
+                        <label for="status" class="radio  position-relative mx-4" (click)="spouse='show'">Married</label>
+                        <input type="radio" id="single" value="status" name="status" class="ml-3" (click)="spouse='hide'">
+                        <label for="single" class="radio  position-relative mx-4" (click)="spouse='hide'">Single</label>
                     </div>
                     <div class="col-md-3 col-sm-6 form-group">
                         <label for="" class="control-label field-required">Personal Email</label>
@@ -427,7 +430,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 text-right pt-2">
-                        <button [disabled]="!regForm.valid" class="btn" onclick="submit()" (click)="step2='show'" >Next</button>
+                        <button [disabled]="regForm.pristine || !regForm.valid" class="btn" onclick="submit()" (click)="step2='show'" >Next</button>
                         </div>
                         
                         

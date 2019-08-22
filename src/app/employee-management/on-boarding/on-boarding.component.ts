@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { IMyDpOptions } from 'mydatepicker';
 @Component({
   selector: 'app-on-boarding',
   templateUrl: './on-boarding.component.html',
@@ -9,7 +9,21 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 export class OnBoardingComponent implements OnInit {
 regForm: FormGroup;
   constructor(private formBuilder: FormBuilder) { }
-
+  public myDatePickerOptions: IMyDpOptions = {
+    dateFormat: 'dd/mm/yyyy',
+    showTodayBtn: false,
+    firstDayOfWeek: 'mo',
+    sunHighlight: true,
+    todayBtnTxt: 'today',
+    satHighlight: true,
+    markCurrentDay: true,
+    showDecreaseDateBtn: true,
+    disableSince: {
+      year: new Date().getFullYear(),
+      month: new Date().getMonth() + 1,
+      day: new Date().getDate() - 2
+    }
+  };
   ngOnInit() {
     this.regForm = this.formBuilder.group({
       firstName: new FormControl('', [Validators.required, Validators.minLength(6)]),
