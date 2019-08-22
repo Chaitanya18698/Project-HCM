@@ -1,0 +1,20 @@
+<div class="wrapper-top-nav p-3">
+    <div class="top-nav d-none d-lg-block">
+        <ul class="nav">
+            <li class="nav-item"> <a class="nav-link" [routerLink]="['/employee-management']"> Dashboard </a> </li>
+            <li class="nav-item"> <a class="nav-link"> Employee </a> </li>
+            <li class="nav-item" data-toggle="dropdown"> <a class="nav-link dropdown-toggle"> On-Boarding </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" [routerLink]="['/on-boarding']">Add New Employee</a>
+                    <a class="dropdown-item" [routerLink]="['/g']">Bulk Upload</a>
+                </div>
+            </li>
+            <li class="nav-item"> <a class="nav-link"> Approvals </a> </li>
+            <li class="nav-item dropdown"> <a class="nav-link  dropdown-toggle border-0" data-toggle="dropdown"> Access Management </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item">Block Employee</a>
+                    <a class="dropdown-item">Locked Accounts</a>
+                </div> 
+            </li>
+        </ul>
+    </div>

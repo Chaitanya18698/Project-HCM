@@ -1,0 +1,145 @@
+<div class="row hide" [ngClass]="{active: step2==='show'}">
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Employee ID</label>
+        <input type="text" formControlName="empId" name="firstName" class="form-control" placeholder="Enter Employee Id..">
+        <div *ngIf="regForm.get('empId').touched && regForm.get('empId').errors"> 
+            <small *ngIf="regForm.get('empId').errors.required" class="text-danger">Employee Id is compulsory</small>
+            <small *ngIf="regForm.get('empId').errors.minlength" class="text-danger">It must contain a minimum of 6 characters</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group ">
+        <label for="" class="control-label field-required">Company Email</label>
+        <input class="form-control" type="text" placeholder="Enter Company Email.." formControlName="companyEmail">
+        <div *ngIf="regForm.controls['companyEmail'].invalid && (regForm.controls['companyEmail'].dirty || regForm.controls['companyEmail'].touched)">                           
+            <small *ngIf="regForm.controls['companyEmail'].errors.required" class="text-danger">Email is compulsory</small>
+            <small *ngIf="regForm.controls['companyEmail'].errors.pattern" class="text-danger">Invalid Email</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group ">
+        <label for="" class="control-label field-required">Official No.</label>
+        <input type="text" placeholder="Enter Official No.." class="form-control" formControlName="officialNo">
+        <div *ngIf="regForm.controls['officialNo'].invalid && (regForm.controls['officialNo'].dirty || regForm.controls['officialNo'].touched)">                           
+            <small *ngIf="regForm.controls['officialNo'].errors.required" class="text-danger">Official Number is compulsory</small>
+            <small *ngIf="regForm.controls['officialNo'].errors.minlength" class="text-danger">Official Number must contain a minimum of 10 numbers</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Date of Joining</label>
+        <input type="date" class="form-control" placeholder="Select Date of Birth.." formControlName="joinDate">
+        <div *ngIf="regForm.controls['joinDate'].invalid && (regForm.controls['joinDate'].dirty || regForm.controls['joinDate'].touched)">                           
+            <small *ngIf="regForm.controls['joinDate'].errors.required" class="text-danger">Join Date is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Location</label>
+        <select name="" id="" class="form-control" formControlName="location">
+            <option value="">Select Location</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['location'].invalid && (regForm.controls['location'].dirty || regForm.controls['location'].touched)">
+            <small *ngIf="regForm.controls['location'].errors.required" class="text-danger">Location is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Bussiness Unit</label>
+        <select name="" id="" class="form-control" formControlName="bussinessUnit">
+            <option value="">Select Bussiness Unit</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['bussinessUnit'].invalid && (regForm.controls['bussinessUnit'].dirty || regForm.controls['bussinessUnit'].touched)">
+            <small *ngIf="regForm.controls['bussinessUnit'].errors.required" class="text-danger">Bussiness Unit is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Department</label>
+        <select name="" id="" class="form-control" formControlName="department">
+            <option value="">Select Department</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['department'].invalid && (regForm.controls['department'].dirty || regForm.controls['department'].touched)">
+            <small *ngIf="regForm.controls['department'].errors.required" class="text-danger">Department Unit is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Sub Department</label>
+        <select name="" id="" class="form-control" formControlName="subDepartment">
+            <option value="">Select Sub Department</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['subDepartment'].invalid && (regForm.controls['subDepartment'].dirty || regForm.controls['subDepartment'].touched)">
+            <small *ngIf="regForm.controls['subDepartment'].errors.required" class="text-danger">Sub Department Unit is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Emplopyee Type</label>
+        <select name="" id="" class="form-control" formControlName="emplopyeeType">
+            <option value="">Select Emplopyee Type</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['emplopyeeType'].invalid && (regForm.controls['emplopyeeType'].dirty || regForm.controls['emplopyeeType'].touched)">
+            <small *ngIf="regForm.controls['emplopyeeType'].errors.required" class="text-danger">Emplopyee Type is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Designation</label>
+        <select name="" id="" class="form-control" formControlName="designation">
+            <option value="">Select Designation</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['designation'].invalid && (regForm.controls['designation'].dirty || regForm.controls['designation'].touched)">
+            <small *ngIf="regForm.controls['designation'].errors.required" class="text-danger">Designation Type is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Reporting Manager</label>
+        <select name="" id="" class="form-control" formControlName="reportingManager">
+            <option value="">Select Employees</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['reportingManager'].invalid && (regForm.controls['reportingManager'].dirty || regForm.controls['reportingManager'].touched)">
+            <small *ngIf="regForm.controls['reportingManager'].errors.required" class="text-danger">Reporting Manager Type is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for="" class="control-label field-required">Notice Period Days</label>
+        <select name="" id="" class="form-control" formControlName="noticePeriod">
+            <option value="">Select Notice Period</option>
+            <option>Vizag</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+        </select>
+        <div *ngIf="regForm.controls['noticePeriod'].invalid && (regForm.controls['noticePeriod'].dirty || regForm.controls['noticePeriod'].touched)">
+            <small *ngIf="regForm.controls['noticePeriod'].errors.required" class="text-danger">Notice Period Type is compulsory</small>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6 form-group">
+        <label for=""  class="control-label field-required">Biometric Id</label>
+        <input type="text" placeholder="Enter Biometric Id.." class="form-control" formControlName="bioId">
+        <div *ngIf="regForm.get('bioId').touched && regForm.get('bioId').errors"> 
+            <small *ngIf="regForm.get('bioId').errors.required" class="text-danger">Id is compulsory</small>
+            <small *ngIf="regForm.get('bioId').errors.minlength" class="text-danger">It should not exceed or decrease 6 characters</small>
+        </div>
+    </div>
+</div>

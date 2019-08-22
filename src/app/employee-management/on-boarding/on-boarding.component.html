@@ -1,0 +1,461 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<app-top-nav></app-top-nav>
+<div class="wrapper-add-employee">
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-white">
+                <h6 class="card-title"> <i class="fas fa-user"></i> Add Employee Details</h6>
+            </div>
+  <div class="card-body">
+    <form action="" [formGroup]="regForm" (ngSubmit)="regForm.valid" novalidate>
+        <div class="form-steps">
+            <ul class="form-steps-nav d-flex">
+                <li class="steps">
+                    <a class="num-circle">
+                    <span class="num active">1</span>
+                        Personal Details
+                    </a>
+                </li>
+                <li class="steps"  [routerLink]="['/step2Form']">
+                    <a class="num-circle">
+                    <span class="num">2</span>
+                        Employee Details
+                    </a></li>
+                <li class="steps">
+                    <a class="num-circle">
+                    <span class="num">3</span>
+                        Policies
+                    </a>
+                </li>
+                <li class="steps">
+                    <a class="num-circle">
+                    <span class="num">4</span>
+                        Proof Documents
+                    </a>
+                </li>
+                <li class="steps">
+                    <a class="num-circle">
+                    <span class="num">5</span>
+                        Certificates
+                    </a>
+                </li>
+                <li class="steps">
+                    <a class="num-cir">
+                    <span class="num">6</span>
+                        Pay roll
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="form-steps-content">
+            <div class="form-step">
+                <div class="row" [ngClass]="{hide: step2==='show'}">
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Salutation</label>
+                        <select type="text" name="" formControlName="salutation" id="" class="form-control">
+                            <option value="">Select Salutation</option>
+                            <option>Dr.</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.get('salutation').errors && regForm.get('salutation').touched">
+                            <small class="text-danger" *ngIf="regForm.get('salutation').errors.required">Salutation code is required</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">First Name</label>
+                        <input type="text" formControlName="firstName" name="firstName" class="form-control" placeholder="Enter First Name..">
+                        <div *ngIf="regForm.get('firstName').touched && regForm.get('firstName').errors"> 
+                            <small *ngIf="regForm.get('firstName').errors.required" class="text-danger">First Name is compulsory</small>
+                            <small *ngIf="regForm.get('firstName').errors.minlength" class="text-danger">It must contain a minimum of 6 characters</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <label for="" class="control-label field-required">Middle Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Middle Name..">
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Last Name</label>
+                        <input type="text" formControlName="lastName" class="form-control"  placeholder="Enter Last Name.." required>
+                    
+                        <div *ngIf="regForm.controls['lastName'].invalid && (regForm.controls['lastName'].dirty || regForm.controls['lastName'].touched)">                           
+                            <small *ngIf="regForm.get('lastName').errors.required" class="text-danger">Last Name is compulsory</small>
+                            <small *ngIf="regForm.get('lastName').errors.minlength" class="text-danger">It must contain a minimum of 6 characters</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Date of Birth</label>
+                        <input type="date" class="form-control" placeholder="Select Date of Birth.." formControlName="dob">
+                        <div *ngIf="regForm.controls['dob'].invalid && (regForm.controls['dob'].dirty || regForm.controls['dob'].touched)">                           
+                            <small *ngIf="regForm.controls['dob'].errors.required" class="text-danger">DOB is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="gender" class="control-label field-required">Gender</label><br>
+                        <input type="radio" id="gender" name="gender" class="pr-2" formControlName="gender"><small>Male</small>
+                        <input type="radio" name="gender" id="gender" class="ml-3"><small>Female</small>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Blood Group</label>
+                        <select name="" id="" class="form-control" formControlName="bloodGroup">
+                            <option value="">Select Blood Group</option>
+                            <option>A+</option>
+                            <option>A-</option>
+                            <option>B+</option>
+                            <option>AB+</option>
+                            <option>AB-</option>
+                            <option>O+</option>
+                            <option>O-</option>
+                        </select>
+                        <!-- <div *ngIf="regForm.controls['bloodGroup'].invalid && (regForm.controls['bloodGroup'].dirty || regForm.controls['bloodGroup'].touched)">                           
+                            <small *ngIf="regForm.controls['bloodGroup'].errors.required" class="text-danger">BloodGroup is compulsory</small>
+                        </div> -->
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <label class="control-label field-required">Marital Status</label><br>
+                        <!-- <input id="status" type="radio" value="status" name="status" class="pr-2" (click)="spouse='show'"> -->
+                        <label for="status" class="radio" (click)="spouse='show'">Married</label>
+                        <!-- <input type="radio" id="single" value="status" name="status" class="ml-3" (click)="spouse='hide'"> -->
+                        <label for="single" class="radio" (click)="spouse='hide'">Single</label>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Personal Email</label>
+                        <input class="form-control" type="text" placeholder="Enter Personal Email.." formControlName="email">
+                        <div *ngIf="regForm.controls['email'].invalid && (regForm.controls['email'].dirty || regForm.controls['email'].touched)">                           
+                            <small *ngIf="regForm.controls['email'].errors.required" class="text-danger">Email is compulsory</small>
+                            <small *ngIf="regForm.controls['email'].errors.pattern" class="text-danger">Invalid Email</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Phone</label>
+                        <input type="text" placeholder="Phone Number" class="form-control" formControlName="phoneNumber">
+                        <div *ngIf="regForm.controls['phoneNumber'].invalid && (regForm.controls['phoneNumber'].dirty || regForm.controls['phoneNumber'].touched)">                           
+                            <small *ngIf="regForm.controls['phoneNumber'].errors.required" class="text-danger">Phone Number is compulsory</small>
+                            <small *ngIf="regForm.controls['phoneNumber'].errors.minlength" class="text-danger">Phone Number must contain a minimum of 10 numbers</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Religion</label>
+                        <select name="" id="" class="form-control" formControlName="religion">
+                            <option value="">Select Religion</option>
+                            <option>Dr.</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['religion'].invalid && (regForm.controls['religion'].dirty || regForm.controls['religion'].touched)">
+                            <small *ngIf="regForm.controls['religion'].errors.required" class="text-danger">Religion is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Nationality</label>
+                        <select name="" id="" class="form-control" formControlName="nationality">
+                            <option value="">Select Nationality</option>
+                            <option>Dr.</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['nationality'].invalid && (regForm.controls['nationality'].dirty || regForm.controls['nationality'].touched)">
+                            <small *ngIf="regForm.controls['nationality'].errors.required" class="text-danger">Nationality is compulsory</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hide " [ngClass]="{active: step2==='show'}">
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Employee ID</label>
+                        <input type="text" formControlName="empId" name="firstName" class="form-control" placeholder="Enter Employee Id..">
+                        <div *ngIf="regForm.get('empId').touched && regForm.get('empId').errors"> 
+                            <small *ngIf="regForm.get('empId').errors.required" class="text-danger">Employee Id is compulsory</small>
+                            <small *ngIf="regForm.get('empId').errors.minlength" class="text-danger">It must contain a minimum of 6 characters</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group ">
+                        <label for="" class="control-label field-required">Company Email</label>
+                        <input class="form-control" type="text" placeholder="Enter Company Email.." formControlName="companyEmail">
+                        <div *ngIf="regForm.controls['companyEmail'].invalid && (regForm.controls['companyEmail'].dirty || regForm.controls['companyEmail'].touched)">                           
+                            <small *ngIf="regForm.controls['companyEmail'].errors.required" class="text-danger">Email is compulsory</small>
+                            <small *ngIf="regForm.controls['companyEmail'].errors.pattern" class="text-danger">Invalid Email</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group ">
+                        <label for="" class="control-label field-required">Official No.</label>
+                        <input type="text" placeholder="Enter Official No.." class="form-control" formControlName="officialNo">
+                        <div *ngIf="regForm.controls['officialNo'].invalid && (regForm.controls['officialNo'].dirty || regForm.controls['officialNo'].touched)">                           
+                            <small *ngIf="regForm.controls['officialNo'].errors.required" class="text-danger">Official Number is compulsory</small>
+                            <small *ngIf="regForm.controls['officialNo'].errors.minlength" class="text-danger">Official Number must contain a minimum of 10 numbers</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Date of Joining</label>
+                        <input type="date" class="form-control" placeholder="Select Date of Birth.." formControlName="joinDate">
+                        <div *ngIf="regForm.controls['joinDate'].invalid && (regForm.controls['joinDate'].dirty || regForm.controls['joinDate'].touched)">                           
+                            <small *ngIf="regForm.controls['joinDate'].errors.required" class="text-danger">Join Date is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Location</label>
+                        <select name="" id="" class="form-control" formControlName="location">
+                            <option value="">Select Location</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['location'].invalid && (regForm.controls['location'].dirty || regForm.controls['location'].touched)">
+                            <small *ngIf="regForm.controls['location'].errors.required" class="text-danger">Location is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Bussiness Unit</label>
+                        <select name="" id="" class="form-control" formControlName="bussinessUnit">
+                            <option value="">Select Bussiness Unit</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['bussinessUnit'].invalid && (regForm.controls['bussinessUnit'].dirty || regForm.controls['bussinessUnit'].touched)">
+                            <small *ngIf="regForm.controls['bussinessUnit'].errors.required" class="text-danger">Bussiness Unit is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Department</label>
+                        <select name="" id="" class="form-control" formControlName="department">
+                            <option value="">Select Department</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['department'].invalid && (regForm.controls['department'].dirty || regForm.controls['department'].touched)">
+                            <small *ngIf="regForm.controls['department'].errors.required" class="text-danger">Department Unit is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Sub Department</label>
+                        <select name="" id="" class="form-control" formControlName="subDepartment">
+                            <option value="">Select Sub Department</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['subDepartment'].invalid && (regForm.controls['subDepartment'].dirty || regForm.controls['subDepartment'].touched)">
+                            <small *ngIf="regForm.controls['subDepartment'].errors.required" class="text-danger">Sub Department Unit is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Emplopyee Type</label>
+                        <select name="" id="" class="form-control" formControlName="emplopyeeType">
+                            <option value="">Select Emplopyee Type</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['emplopyeeType'].invalid && (regForm.controls['emplopyeeType'].dirty || regForm.controls['emplopyeeType'].touched)">
+                            <small *ngIf="regForm.controls['emplopyeeType'].errors.required" class="text-danger">Emplopyee Type is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Designation</label>
+                        <select name="" id="" class="form-control" formControlName="designation">
+                            <option value="">Select Designation</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['designation'].invalid && (regForm.controls['designation'].dirty || regForm.controls['designation'].touched)">
+                            <small *ngIf="regForm.controls['designation'].errors.required" class="text-danger">Designation Type is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Reporting Manager</label>
+                        <select name="" id="" class="form-control" formControlName="reportingManager">
+                            <option value="">Select Employees</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['reportingManager'].invalid && (regForm.controls['reportingManager'].dirty || regForm.controls['reportingManager'].touched)">
+                            <small *ngIf="regForm.controls['reportingManager'].errors.required" class="text-danger">Reporting Manager Type is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for="" class="control-label field-required">Notice Period Days</label>
+                        <select name="" id="" class="form-control" formControlName="noticePeriod">
+                            <option value="">Select Notice Period</option>
+                            <option>Vizag</option>
+                            <option>Mr.</option>
+                            <option>Mrs.</option>
+                            <option>Ms.</option>
+                        </select>
+                        <div *ngIf="regForm.controls['noticePeriod'].invalid && (regForm.controls['noticePeriod'].dirty || regForm.controls['noticePeriod'].touched)">
+                            <small *ngIf="regForm.controls['noticePeriod'].errors.required" class="text-danger">Notice Period Type is compulsory</small>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 form-group">
+                        <label for=""  class="control-label field-required">Biometric Id</label>
+                        <input type="text" placeholder="Enter Biometric Id.." class="form-control" formControlName="bioId">
+                        <div *ngIf="regForm.get('bioId').touched && regForm.get('bioId').errors"> 
+                            <small *ngIf="regForm.get('bioId').errors.required" class="text-danger">Id is compulsory</small>
+                            <small *ngIf="regForm.get('bioId').errors.minlength" class="text-danger">It should not exceed or decrease 6 characters</small>
+                        </div>
+                    </div>
+                </div>
+                   
+                    
+                    
+                    <div class="row border-top mt-4 pt-4" [ngClass]="{hide: step2==='show'}">
+                        <div class="col-12"><h5>Emergency Contact Details</h5></div>
+                        <div class="col-md-3 col-sm-6 form-group" >
+                            <label for="" class="control-label field-required">Name</label>
+                            <input type="text" placeholder="Enter Name.." class="form-control" formControlName="name">
+                            <div *ngIf="regForm.get('name').touched && regForm.get('name').errors"> 
+                                <small *ngIf="regForm.get('name').errors.required" class="text-danger">First Name is compulsory</small>
+                                <small *ngIf="regForm.get('name').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">Relation</label>
+                            <select name="" id="" class="form-control" formControlName="relation">
+                                <option value="">Select</option>
+                                <option>Father</option>
+                                <option>Mother</option>
+                                <option>Gaurdian</option>
+                            </select>
+                            <div *ngIf="regForm.controls['relation'].invalid && (regForm.controls['relation'].dirty || regForm.controls['relation'].touched)">
+                                <small *ngIf="regForm.controls['relation'].errors.required" class="text-danger">Nationality is compulsory</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">Contact Number</label>
+                            <input type="text" placeholder="Enter Contact No." class="form-control" formControlName="phone">
+                            <div *ngIf="regForm.controls['phone'].invalid && (regForm.controls['phone'].dirty || regForm.controls['phone'].touched)">                           
+                                <small *ngIf="regForm.controls['phone'].errors.required" class="text-danger">Phone Number is compulsory</small>
+                                <small *ngIf="regForm.controls['phone'].errors.minlength" class="text-danger">Phone Number must contain a minimum of 10 numbers</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row border-top mt-4 pt-4" [ngClass]="{hide: step2==='show'}">
+                            <div class="col-12"><h5>Family Details</h5></div>
+                            <div class="col-md-3 col-sm-6 form-group">
+                                <label for="" class="control-label field-required">Father</label>
+                                <input type="text" placeholder="Enter Father Name.." class="form-control" formControlName="fName">
+                                <div *ngIf="regForm.get('fName').touched && regForm.get('fName').errors"> 
+                                    <small *ngIf="regForm.get('fName').errors.required" class="text-danger">Father Name is compulsory</small>
+                                    <small *ngIf="regForm.get('fName').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 form-group">
+                                <label class="control-label field-required">Mother</label>
+                                <input type="text" placeholder="Enter Mother Name.." class="form-control" formControlName="mName">
+                                <div *ngIf="regForm.get('mName').touched && regForm.get('mName').errors"> 
+                                    <small *ngIf="regForm.get('mName').errors.required" class="text-danger">Mother Name is compulsory</small>
+                                    <small *ngIf="regForm.get('mName').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 form-group hide"  [ngClass]="{active: spouse==='show'}">
+                                    <label class="control-label field-required">Spouse Name</label>
+                                    <input type="text" placeholder="Enter Spouse Name.." class="form-control" formControlName="sName">
+                                    <div *ngIf="regForm.get('sName').touched && regForm.get('sName').errors"> 
+                                        <small *ngIf="regForm.get('sName').errors.required" class="text-danger">Spouse Name is compulsory</small>
+                                        <small *ngIf="regForm.get('sName').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                                    </div>
+                                </div>
+                        
+                        </div>
+                        <div class="row border-top mt-4 pt-4" [ngClass]="{hide: step2==='show'}">
+                        <div class="col-12"><h5>Address Details</h5></div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">Residential No.</label>
+                            <input type="text" placeholder="Enter Residential No.." class="form-control" formControlName="residentialNum">
+                            <div *ngIf="regForm.get('residentialNum').touched && regForm.get('residentialNum').errors"> 
+                                <small *ngIf="regForm.get('residentialNum').errors.required" class="text-danger">Residential Number is compulsory</small>
+                                <small *ngIf="regForm.get('residentialNum').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">Address Line 1</label>
+                            <input type="text" placeholder="Enter Address Line 1.." class="form-control" formControlName="address1">
+                            <div *ngIf="regForm.get('address1').touched && regForm.get('address1').errors"> 
+                                <small *ngIf="regForm.get('address1').errors.required" class="text-danger">Residential Number is compulsory</small>
+                                <small *ngIf="regForm.get('address1').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <label for="" class="control-label field-required">Address Line 2</label>
+                            <input type="text" placeholder="Enter Address Line 2.." class="form-control">
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <label for="" class="control-label field-required">Locality/Village</label>
+                            <input type="text" placeholder="Enter Locality.." class="form-control">
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <label for="" class="control-label field-required">City</label>
+                            <input type="text" placeholder="Enter City.." class="form-control">
+                        </div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">State</label>
+                            <input type="text" placeholder="Enter State.." class="form-control" formControlName="state">
+                            <div *ngIf="regForm.get('state').touched && regForm.get('state').errors"> 
+                                <small *ngIf="regForm.get('state').errors.required" class="text-danger">State is compulsory</small>
+                                <small *ngIf="regForm.get('state').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">Country</label>
+                            <input type="text" placeholder="Enter Country.." class="form-control" formControlName="country">
+                            <div *ngIf="regForm.get('country').touched && regForm.get('country').errors"> 
+                                <small *ngIf="regForm.get('country').errors.required" class="text-danger">Country is compulsory</small>
+                                <small *ngIf="regForm.get('country').errors.minlength" class="text-danger">It must contain a minimum of 2 characters</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 form-group">
+                            <label for="" class="control-label field-required">Pin Code</label>
+                            <input type="text" placeholder="Enter Pin Code.." class="form-control" formControlName="pincode">
+                            <div *ngIf="regForm.get('pincode').touched && regForm.get('pincode').errors"> 
+                                <small *ngIf="regForm.get('pincode').errors.required" class="text-danger">Pincode is compulsory</small>
+                                <small *ngIf="regForm.get('pincode').errors.minlength" class="text-danger">It should not exceed or decrease 6 characters</small>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-right pt-2">
+                        <button [disabled]="!regForm.valid" class="btn" onclick="submit()" (click)="step2='show'" >Next</button>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
+
+        </div>
+
+    </form>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<app-footer></app-footer>
