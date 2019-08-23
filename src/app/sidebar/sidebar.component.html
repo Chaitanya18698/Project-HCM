@@ -5,10 +5,24 @@
                 <span class="icon"> <i class="fas fa-tachometer-alt"></i></span>
                 Dashboard</a>
         </li>
-        <li class="sidebar-menu-item">
+        <li class="sidebar-menu-item position-relative">
             <a class="sidebar-menu-item-link" [routerLink]="['/employee-management']">
                 <span class="icon"> <i class="fas fa-users"></i></span>
                 Employee Management</a>
+                <ul class="sub-menu">
+                        <li class="sub-menu-item">
+                                <a  class="sub-menu-item-link"> <i class="fas fa-chevron-right"></i> Employee</a>
+                        </li>
+                        <li class="sub-menu-item">
+                                <a  class="sub-menu-item-link"> <i class="fas fa-chevron-right"></i> On-Boarding</a>
+                        </li>
+                        <li class="sub-menu-item">
+                                <a  class="sub-menu-item-link"> <i class="fas fa-chevron-right"></i> Approve Requests</a>
+                        </li>
+                        <li class="sub-menu-item">
+                                <a class="sub-menu-item-link"> <i class="fas fa-chevron-right"></i> Access Management</a>
+                        </li>
+                </ul>
         </li>
         <li class="sidebar-menu-item">
             <a class="sidebar-menu-item-link" [routerLink]="['/t']">
